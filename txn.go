@@ -92,7 +92,7 @@ func (txn *Txn) Commit() error {
 	ret := C.mdb_txn_commit(txn._txn)
 	txn.unlockThread()
 	// The transaction handle is freed if there was no error
-	if ret == C.MDB_SUCCESS {
+	if ret == SUCCESS {
 		txn._txn = nil
 	}
 	return errno(ret)
