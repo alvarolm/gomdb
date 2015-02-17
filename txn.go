@@ -86,6 +86,9 @@ func (txn *Txn) unlockThread() {
 }
 
 func (txn *Txn) Commit() error {
+	if txn._txn == nil {
+		return nil // already committed/aborted
+	}
 	ret := C.mdb_txn_commit(txn._txn)
 	txn.unlockThread()
 	// The transaction handle is freed if there was no error
