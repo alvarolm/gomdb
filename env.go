@@ -23,14 +23,15 @@ const SUCCESS = C.MDB_SUCCESS
 
 // mdb_env Environment Flags
 const (
-	FIXEDMAP   = C.MDB_FIXEDMAP   // mmap at a fixed address (experimental)
-	NOSUBDIR   = C.MDB_NOSUBDIR   // no environment directory
-	NOSYNC     = C.MDB_NOSYNC     // don't fsync after commit
-	RDONLY     = C.MDB_RDONLY     // read only
-	NOMETASYNC = C.MDB_NOMETASYNC // don't fsync metapage after commit
-	WRITEMAP   = C.MDB_WRITEMAP   // use writable mmap
-	MAPASYNC   = C.MDB_MAPASYNC   // use asynchronous msync when MDB_WRITEMAP is use
-	NOTLS      = C.MDB_NOTLS      // tie reader locktable slots to Txn objects instead of threads
+	FIXEDMAP      = C.MDB_FIXEDMAP   // mmap at a fixed address (experimental)
+	NOSUBDIR      = C.MDB_NOSUBDIR   // no environment directory
+	NOSYNC        = C.MDB_NOSYNC     // don't fsync after commit
+	RDONLY        = C.MDB_RDONLY     // read only
+	NOMETASYNC    = C.MDB_NOMETASYNC // don't fsync metapage after commit
+	WRITEMAP      = C.MDB_WRITEMAP   // use writable mmap
+	MAPASYNC      = C.MDB_MAPASYNC   // use asynchronous msync when MDB_WRITEMAP is use
+	NOTLS         = C.MDB_NOTLS      // tie reader locktable slots to Txn objects instead of threads
+	MDB_NORDAHEAD = C.MDB_NORDAHEAD  // turn off readahead
 )
 
 type DBI uint
