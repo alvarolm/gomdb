@@ -109,5 +109,16 @@ func TestTest1(t *testing.T) {
 		txn.Abort()
 		t.Fatalf("Invalid txn get %s", string(bval))
 	}
+	// test RawBytes
+	var vval Val
+	vval, err = txn.GetVal(dbi, []byte("Key-0"))
+	if err != nil {
+		txn.Abort()
+		t.Fatalf("Error during txn get %s", err)
+	}
+	if string(vval.RawBytes()) != "Val-0" {
+		txn.Abort()
+		t.Fatalf("Invalid txn get %s", string(bval))
+	}
 	txn.Abort()
 }

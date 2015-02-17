@@ -36,6 +36,11 @@ func (val Val) Bytes() []byte {
 	return C.GoBytes(val.mv_data, C.int(val.mv_size))
 }
 
+func (val Val) RawBytes() []byte {
+	h := reflect.SliceHeader{uintptr(val.mv_data), int(val.mv_size), int(val.mv_size)}
+	return *(*[]byte)(unsafe.Pointer(&h))
+}
+
 // If val is nil, a empty slice is retured.
 func (val Val) BytesNoCopy() []byte {
 	hdr := reflect.SliceHeader{
